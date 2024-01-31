@@ -1,0 +1,169 @@
+C51 COMPILER V9.60.7.0   FOUR_SIDE_TRAFFIC_LIGHT                                           01/31/2024 15:55:31 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE FOUR_SIDE_TRAFFIC_LIGHT
+OBJECT MODULE PLACED IN .\Objects\four-side-traffic-light.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE four-side-traffic-light.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PR
+                    -INT(.\Listings\four-side-traffic-light.lst) TABS(2) OBJECT(.\Objects\four-side-traffic-light.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          //signal 1
+   4          sbit tl1r = P2^0;      // red
+   5          sbit tl1o = P2^1;      // orange
+   6          sbit tl1g = P2^2;      // green
+   7          
+   8          //signal 2
+   9          sbit tl2r = P2^3;    // red
+  10          sbit tl2o = P2^4;     // orange
+  11          sbit tl2g = P2^5;    // green
+  12          
+  13          //signal 3
+  14          sbit tl3r = P3^0;    // red
+  15          sbit tl3o = P3^1;    // orange
+  16          sbit tl3g = P3^2;    // green
+  17          
+  18          //signal 4
+  19          sbit tl4r = P3^3;    // red
+  20          sbit tl4o = P3^4;     // orange
+  21          sbit tl4g = P3^5;    // green
+  22          
+  23          
+  24          void delay(int t);          
+  25          void trafficlight(void);
+  26          void main()                  // main program
+  27          {                 
+  28   1        P2=0x00;         // turned off the lights
+  29   1        P3=0x00;        // turned off the lights
+  30   1        
+  31   1        while(1)
+  32   1           {
+  33   2        trafficlight(); 
+  34   2           }
+  35   1      
+  36   1      }
+  37          void delay(unsigned long int t)              // delay routine
+  38          {
+*** WARNING C235 IN LINE 38 OF four-side-traffic-light.c: parameter 1: different types
+  39   1        while(t>0)
+  40   1        {
+  41   2        unsigned long int i;
+  42   2        for(i=1;i<10*1275;i++);
+  43   2          t--;
+  44   2        }
+  45   1      }
+  46          void trafficlight(void)         // traffic light system program
+  47          {
+  48   1        
+  49   1      // First
+  50   1      
+  51   1      P2= 0x11;  // traffic signal control data
+  52   1      P3= 0x08;
+  53   1      
+C51 COMPILER V9.60.7.0   FOUR_SIDE_TRAFFIC_LIGHT                                           01/31/2024 15:55:31 PAGE 2   
+
+  54   1      tl1r=0;    // signal 1
+  55   1      tl1o=0; 
+  56   1      tl1g=1;
+  57   1      
+  58   1      tl2r=0;   // signal 2
+  59   1      tl2o=1;
+  60   1      tl2g=0;
+  61   1      
+  62   1      tl3r=1;   // signal 3
+  63   1      tl3o=0;
+  64   1      tl3g=0;
+  65   1        
+  66   1      tl4r=1;   // signal 4
+  67   1      tl4o=0; 
+  68   1      tl4g=0;
+  69   1        
+  70   1      delay(1);   // delay 
+  71   1      
+  72   1      // Second
+  73   1      
+  74   1      P2= 0x0c;    // traffic signal control data
+  75   1      P3= 0x04;
+  76   1      
+  77   1      tl1r=1;     // signal 1
+  78   1      tl1o=0; 
+  79   1      tl1g=0;
+  80   1        
+  81   1      tl2r=0;    // signal 2
+  82   1      tl2o=0; 
+  83   1      tl2g=1;
+  84   1      
+  85   1      tl3r=0;    // signal 3
+  86   1      tl3o=1;
+  87   1      tl3g=0; 
+  88   1      
+  89   1      tl4r=1;   // signal 4
+  90   1      tl4o=0; 
+  91   1      tl4g=0;
+  92   1      
+  93   1      delay(1);  // delay
+  94   1      
+  95   1      // Third
+  96   1      
+  97   1      P2= 0x22;  // traffic signal control data
+  98   1      P3= 0x02;
+  99   1         
+ 100   1      tl1r=1;   // signal 1
+ 101   1      tl1o=0; 
+ 102   1      tl1g=0;
+ 103   1      
+ 104   1      tl2r=1;   // signal 2
+ 105   1      tl2o=0;
+ 106   1      tl2g=0;
+ 107   1      
+ 108   1      tl3r=0;   // signal 3
+ 109   1      tl3o=0;
+ 110   1      tl3g=1; 
+ 111   1      
+ 112   1      tl4r=0;   // signal 4
+ 113   1      tl4o=1; 
+ 114   1      tl4g=0;
+ 115   1      
+C51 COMPILER V9.60.7.0   FOUR_SIDE_TRAFFIC_LIGHT                                           01/31/2024 15:55:31 PAGE 3   
+
+ 116   1      delay(1);  // delay
+ 117   1      
+ 118   1      // Fourth
+ 119   1      
+ 120   1      P2= 0x26;  // traffic signal control data
+ 121   1      P3= 0x01;
+ 122   1         
+ 123   1      tl1r=0;   // signal 1
+ 124   1      tl1o=1; 
+ 125   1      tl1g=0;
+ 126   1      
+ 127   1      tl2r=1;   // signal 2
+ 128   1      tl2o=0;
+ 129   1      tl2g=0;
+ 130   1      
+ 131   1      tl3r=1;   // signal 3
+ 132   1      tl3o=0;
+ 133   1      tl3g=0; 
+ 134   1      
+ 135   1      tl4r=0;   // signal 4
+ 136   1      tl4o=0; 
+ 137   1      tl4g=1;
+ 138   1      
+ 139   1      delay(1);  // delay
+ 140   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    256    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

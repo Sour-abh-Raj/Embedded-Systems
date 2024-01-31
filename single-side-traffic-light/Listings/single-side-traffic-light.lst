@@ -1,0 +1,75 @@
+C51 COMPILER V9.60.7.0   SINGLE_SIDE_TRAFFIC_LIGHT                                         01/31/2024 15:19:48 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE SINGLE_SIDE_TRAFFIC_LIGHT
+OBJECT MODULE PLACED IN .\Objects\single-side-traffic-light.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE single-side-traffic-light.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND 
+                    -PRINT(.\Listings\single-side-traffic-light.lst) TABS(2) OBJECT(.\Objects\single-side-traffic-light.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          sbit tl1r = P2^0;      // red
+   4          sbit tl1o = P2^1;      // orange
+   5          sbit tl1g = P2^2;      // green
+   6          
+   7          void delay(int t);          
+   8          void trafficlight(void);
+   9          void main()                 
+  10          {                 
+  11   1        P2=0x00;            
+  12   1        
+  13   1        while(1)
+  14   1           {
+  15   2        trafficlight(); 
+  16   2           }
+  17   1      
+  18   1      }
+  19          void delay(unsigned long int t)      
+  20          {
+*** WARNING C235 IN LINE 20 OF single-side-traffic-light.c: parameter 1: different types
+  21   1        while(t>0)
+  22   1        {
+  23   2        unsigned long int i;
+  24   2        for(i=1;i<10*1275;i++);
+  25   2          t--;
+  26   2        }
+  27   1      }
+  28          void trafficlight(void)   
+  29          {
+  30   1        
+  31   1      tl1r=1; 
+  32   1      tl1o=0; 
+  33   1      tl1g=0;
+  34   1      
+  35   1      delay(100);
+  36   1        
+  37   1      tl1r=0; 
+  38   1      tl1o=1; 
+  39   1      tl1g=0;
+  40   1      
+  41   1      delay(100);
+  42   1        
+  43   1      tl1r=0; 
+  44   1      tl1o=0; 
+  45   1      tl1g=1;
+  46   1      
+  47   1      delay(100);
+  48   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    157    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.60.7.0   SINGLE_SIDE_TRAFFIC_LIGHT                                         01/31/2024 15:19:48 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
