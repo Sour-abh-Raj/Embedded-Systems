@@ -1,4 +1,0 @@
-".\Objects\STARTUP.obj",
-".\Objects\four-side-traffic-light.obj" 
-TO ".\Objects\four-side-traffic-light" 
-PRINT(".\Listings\four-side-traffic-light.m51")
